@@ -1,0 +1,34 @@
+E:\HocKy8\LapTrinhTruyenThong\DoAn\HUONG DAN DO AN C# SOCKET OK\BAI10_CLIENT_TCP_QL_CHUC_VU\bin\Debug\BAI10_CLIENT_TCP_QL_CHUC_VU.exe.config
+E:\HocKy8\LapTrinhTruyenThong\DoAn\HUONG DAN DO AN C# SOCKET OK\BAI10_CLIENT_TCP_QL_CHUC_VU\bin\Debug\BAI10_CLIENT_TCP_QL_CHUC_VU.exe
+E:\HocKy8\LapTrinhTruyenThong\DoAn\HUONG DAN DO AN C# SOCKET OK\BAI10_CLIENT_TCP_QL_CHUC_VU\bin\Debug\BAI10_CLIENT_TCP_QL_CHUC_VU.pdb
+E:\HocKy8\LapTrinhTruyenThong\DoAn\HUONG DAN DO AN C# SOCKET OK\BAI10_CLIENT_TCP_QL_CHUC_VU\obj\Debug\BAI_CLIENT_TCP_QL_BAN_MAYTINH.csproj.AssemblyReference.cache
+E:\HocKy8\LapTrinhTruyenThong\DoAn\HUONG DAN DO AN C# SOCKET OK\BAI10_CLIENT_TCP_QL_CHUC_VU\obj\Debug\BAI_CLIENT_TCP_QL_BAN_MAYTINH.csproj.SuggestedBindingRedirects.cache
+E:\HocKy8\LapTrinhTruyenThong\DoAn\HUONG DAN DO AN C# SOCKET OK\BAI10_CLIENT_TCP_QL_CHUC_VU\obj\Debug\BAI10_CLIENT_TCP_QL_CHUC_VU.frmChucVu.resources
+E:\HocKy8\LapTrinhTruyenThong\DoAn\HUONG DAN DO AN C# SOCKET OK\BAI10_CLIENT_TCP_QL_CHUC_VU\obj\Debug\BAI10_CLIENT_TCP_QL_CHUC_VU.frmDangNhap.resources
+E:\HocKy8\LapTrinhTruyenThong\DoAn\HUONG DAN DO AN C# SOCKET OK\BAI10_CLIENT_TCP_QL_CHUC_VU\obj\Debug\BAI10_CLIENT_TCP_QL_CHUC_VU.frmKetNoi.resources
+E:\HocKy8\LapTrinhTruyenThong\DoAn\HUONG DAN DO AN C# SOCKET OK\BAI10_CLIENT_TCP_QL_CHUC_VU\obj\Debug\BAI10_CLIENT_TCP_QL_CHUC_VU.frmMain.resources
+E:\HocKy8\LapTrinhTruyenThong\DoAn\HUONG DAN DO AN C# SOCKET OK\BAI10_CLIENT_TCP_QL_CHUC_VU\obj\Debug\BAI10_CLIENT_TCP_QL_CHUC_VU.frmNhanVien.resources
+E:\HocKy8\LapTrinhTruyenThong\DoAn\HUONG DAN DO AN C# SOCKET OK\BAI10_CLIENT_TCP_QL_CHUC_VU\obj\Debug\BAI10_CLIENT_TCP_QL_CHUC_VU.frmSanPham.resources
+E:\HocKy8\LapTrinhTruyenThong\DoAn\HUONG DAN DO AN C# SOCKET OK\BAI10_CLIENT_TCP_QL_CHUC_VU\obj\Debug\BAI10_CLIENT_TCP_QL_CHUC_VU.Properties.Resources.resources
+E:\HocKy8\LapTrinhTruyenThong\DoAn\HUONG DAN DO AN C# SOCKET OK\BAI10_CLIENT_TCP_QL_CHUC_VU\obj\Debug\BAI_CLIENT_TCP_QL_BAN_MAYTINH.csproj.GenerateResource.cache
+E:\HocKy8\LapTrinhTruyenThong\DoAn\HUONG DAN DO AN C# SOCKET OK\BAI10_CLIENT_TCP_QL_CHUC_VU\obj\Debug\BAI_CLIENT_TCP_QL_BAN_MAYTINH.csproj.CoreCompileInputs.cache
+E:\HocKy8\LapTrinhTruyenThong\DoAn\HUONG DAN DO AN C# SOCKET OK\BAI10_CLIENT_TCP_QL_CHUC_VU\obj\Debug\BAI10_CLIENT_TCP_QL_CHUC_VU.exe
+E:\HocKy8\LapTrinhTruyenThong\DoAn\HUONG DAN DO AN C# SOCKET OK\BAI10_CLIENT_TCP_QL_CHUC_VU\obj\Debug\BAI10_CLIENT_TCP_QL_CHUC_VU.pdb
+E:\HocKy8\LapTrinhTruyenThong\DoAn\HUONG DAN DO AN C# SOCKET OK\BAI10_CLIENT_TCP_QL_CHUC_VU\obj\Debug\BAI10_CLIENT_TCP_QL_CHUC_VU.frm_HangSanXuat.resources
+E:\HocKy8\LapTrinhTruyenThong\DoAn\LTTT_DoAn\BAI10_CLIENT_TCP_QL_CHUC_VU\bin\Debug\BAI10_CLIENT_TCP_QL_CHUC_VU.exe.config
+E:\HocKy8\LapTrinhTruyenThong\DoAn\LTTT_DoAn\BAI10_CLIENT_TCP_QL_CHUC_VU\bin\Debug\BAI10_CLIENT_TCP_QL_CHUC_VU.exe
+E:\HocKy8\LapTrinhTruyenThong\DoAn\LTTT_DoAn\BAI10_CLIENT_TCP_QL_CHUC_VU\bin\Debug\BAI10_CLIENT_TCP_QL_CHUC_VU.pdb
+E:\HocKy8\LapTrinhTruyenThong\DoAn\LTTT_DoAn\BAI10_CLIENT_TCP_QL_CHUC_VU\obj\Debug\BAI_CLIENT_TCP_QL_BAN_MAYTINH.csproj.AssemblyReference.cache
+E:\HocKy8\LapTrinhTruyenThong\DoAn\LTTT_DoAn\BAI10_CLIENT_TCP_QL_CHUC_VU\obj\Debug\BAI_CLIENT_TCP_QL_BAN_MAYTINH.csproj.SuggestedBindingRedirects.cache
+E:\HocKy8\LapTrinhTruyenThong\DoAn\LTTT_DoAn\BAI10_CLIENT_TCP_QL_CHUC_VU\obj\Debug\BAI10_CLIENT_TCP_QL_CHUC_VU.frmChucVu.resources
+E:\HocKy8\LapTrinhTruyenThong\DoAn\LTTT_DoAn\BAI10_CLIENT_TCP_QL_CHUC_VU\obj\Debug\BAI10_CLIENT_TCP_QL_CHUC_VU.frmDangNhap.resources
+E:\HocKy8\LapTrinhTruyenThong\DoAn\LTTT_DoAn\BAI10_CLIENT_TCP_QL_CHUC_VU\obj\Debug\BAI10_CLIENT_TCP_QL_CHUC_VU.frmKetNoi.resources
+E:\HocKy8\LapTrinhTruyenThong\DoAn\LTTT_DoAn\BAI10_CLIENT_TCP_QL_CHUC_VU\obj\Debug\BAI10_CLIENT_TCP_QL_CHUC_VU.frmMain.resources
+E:\HocKy8\LapTrinhTruyenThong\DoAn\LTTT_DoAn\BAI10_CLIENT_TCP_QL_CHUC_VU\obj\Debug\BAI10_CLIENT_TCP_QL_CHUC_VU.frmNhanVien.resources
+E:\HocKy8\LapTrinhTruyenThong\DoAn\LTTT_DoAn\BAI10_CLIENT_TCP_QL_CHUC_VU\obj\Debug\BAI10_CLIENT_TCP_QL_CHUC_VU.frmSanPham.resources
+E:\HocKy8\LapTrinhTruyenThong\DoAn\LTTT_DoAn\BAI10_CLIENT_TCP_QL_CHUC_VU\obj\Debug\BAI10_CLIENT_TCP_QL_CHUC_VU.frm_HangSanXuat.resources
+E:\HocKy8\LapTrinhTruyenThong\DoAn\LTTT_DoAn\BAI10_CLIENT_TCP_QL_CHUC_VU\obj\Debug\BAI10_CLIENT_TCP_QL_CHUC_VU.Properties.Resources.resources
+E:\HocKy8\LapTrinhTruyenThong\DoAn\LTTT_DoAn\BAI10_CLIENT_TCP_QL_CHUC_VU\obj\Debug\BAI_CLIENT_TCP_QL_BAN_MAYTINH.csproj.GenerateResource.cache
+E:\HocKy8\LapTrinhTruyenThong\DoAn\LTTT_DoAn\BAI10_CLIENT_TCP_QL_CHUC_VU\obj\Debug\BAI_CLIENT_TCP_QL_BAN_MAYTINH.csproj.CoreCompileInputs.cache
+E:\HocKy8\LapTrinhTruyenThong\DoAn\LTTT_DoAn\BAI10_CLIENT_TCP_QL_CHUC_VU\obj\Debug\BAI10_CLIENT_TCP_QL_CHUC_VU.exe
+E:\HocKy8\LapTrinhTruyenThong\DoAn\LTTT_DoAn\BAI10_CLIENT_TCP_QL_CHUC_VU\obj\Debug\BAI10_CLIENT_TCP_QL_CHUC_VU.pdb
