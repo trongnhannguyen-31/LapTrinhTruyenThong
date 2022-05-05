@@ -36,13 +36,14 @@ namespace BAI10_CLIENT_TCP_QL_CHUC_VU
             this.danhMucToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.i_dmChucVu = new System.Windows.Forms.ToolStripMenuItem();
             this.i_dmNhanVien = new System.Windows.Forms.ToolStripMenuItem();
+            this.i_dmSanPham = new System.Windows.Forms.ToolStripMenuItem();
+            this.i_dmHangSanXuat = new System.Windows.Forms.ToolStripMenuItem();
             this.nghiepvuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.i_bangluong = new System.Windows.Forms.ToolStripMenuItem();
             this.i_quatrinhluong = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.stt_hoten = new System.Windows.Forms.ToolStripStatusLabel();
             this.stt_thoigian = new System.Windows.Forms.ToolStripStatusLabel();
-            this.i_dmSanPham = new System.Windows.Forms.ToolStripMenuItem();
             this.menuMain.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -57,7 +58,7 @@ namespace BAI10_CLIENT_TCP_QL_CHUC_VU
             this.nghiepvuToolStripMenuItem});
             this.menuMain.Location = new System.Drawing.Point(0, 0);
             this.menuMain.Name = "menuMain";
-            this.menuMain.Size = new System.Drawing.Size(1263, 35);
+            this.menuMain.Size = new System.Drawing.Size(1263, 33);
             this.menuMain.TabIndex = 2;
             this.menuMain.Text = "menuStrip1";
             // 
@@ -90,7 +91,8 @@ namespace BAI10_CLIENT_TCP_QL_CHUC_VU
             this.danhMucToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.i_dmChucVu,
             this.i_dmNhanVien,
-            this.i_dmSanPham});
+            this.i_dmSanPham,
+            this.i_dmHangSanXuat});
             this.danhMucToolStripMenuItem.Name = "danhMucToolStripMenuItem";
             this.danhMucToolStripMenuItem.Size = new System.Drawing.Size(109, 29);
             this.danhMucToolStripMenuItem.Text = "Danh mục";
@@ -108,6 +110,20 @@ namespace BAI10_CLIENT_TCP_QL_CHUC_VU
             this.i_dmNhanVien.Size = new System.Drawing.Size(270, 34);
             this.i_dmNhanVien.Text = "Nhân viên";
             this.i_dmNhanVien.Click += new System.EventHandler(this.i_dmNhanVien_Click);
+            // 
+            // i_dmSanPham
+            // 
+            this.i_dmSanPham.Name = "i_dmSanPham";
+            this.i_dmSanPham.Size = new System.Drawing.Size(270, 34);
+            this.i_dmSanPham.Text = "Sản phẩm";
+            this.i_dmSanPham.Click += new System.EventHandler(this.i_dmSanPham_Click);
+            // 
+            // i_dmHangSanXuat
+            // 
+            this.i_dmHangSanXuat.Name = "i_dmHangSanXuat";
+            this.i_dmHangSanXuat.Size = new System.Drawing.Size(270, 34);
+            this.i_dmHangSanXuat.Text = "Hãng Sản Xuất";
+            this.i_dmHangSanXuat.Click += new System.EventHandler(this.i_dmHangSanXuat_Click);
             // 
             // nghiepvuToolStripMenuItem
             // 
@@ -155,13 +171,6 @@ namespace BAI10_CLIENT_TCP_QL_CHUC_VU
             this.stt_thoigian.Size = new System.Drawing.Size(176, 25);
             this.stt_thoigian.Text = "Thời gian đăng nhập";
             // 
-            // i_dmSanPham
-            // 
-            this.i_dmSanPham.Name = "i_dmSanPham";
-            this.i_dmSanPham.Size = new System.Drawing.Size(270, 34);
-            this.i_dmSanPham.Text = "Sản phẩm";
-            this.i_dmSanPham.Click += new System.EventHandler(this.i_dmSanPham_Click);
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -199,5 +208,6 @@ namespace BAI10_CLIENT_TCP_QL_CHUC_VU
         private System.Windows.Forms.ToolStripStatusLabel stt_hoten;
         private System.Windows.Forms.ToolStripStatusLabel stt_thoigian;
         private System.Windows.Forms.ToolStripMenuItem i_dmSanPham;
+        private System.Windows.Forms.ToolStripMenuItem i_dmHangSanXuat;
     }
 }

@@ -33,8 +33,6 @@ namespace BAI10_CLIENT_TCP_QL_CHUC_VU
         int chon = 0;
 
 
-
-
         frmChucVu fCV;
         frmNhanVien fNV;
         frmKetNoi fKN;
@@ -42,6 +40,10 @@ namespace BAI10_CLIENT_TCP_QL_CHUC_VU
 
         // form SanPham
         frmSanPham fSanPham;
+
+        // form HangSanXuat
+        frmHangSanXuat fHangSanXuat;
+
 
         string tennguoidung = "";
         bool kiemtradangnhap = false;
@@ -77,6 +79,7 @@ namespace BAI10_CLIENT_TCP_QL_CHUC_VU
                 i_bangluong.Enabled = true;
                 i_quatrinhluong.Enabled = true;
                 i_dmSanPham.Enabled = true;
+                i_dmHangSanXuat.Enabled = true;
             }
             else
             {
@@ -91,6 +94,7 @@ namespace BAI10_CLIENT_TCP_QL_CHUC_VU
                 i_bangluong.Enabled = false;
                 i_quatrinhluong.Enabled = false;
                 i_dmSanPham.Enabled = false;
+                i_dmHangSanXuat.Enabled= false;
             }
 
         }
@@ -215,6 +219,16 @@ namespace BAI10_CLIENT_TCP_QL_CHUC_VU
                 fSanPham = new frmSanPham();
                 fSanPham.MdiParent = this;
                 fSanPham.Show();
+            }
+        }
+
+        private void i_dmHangSanXuat_Click(object sender, EventArgs e)
+        {
+            if (fHangSanXuat == null || fHangSanXuat.IsDisposed)
+            {
+                fHangSanXuat = new frmHangSanXuat();
+                fHangSanXuat.MdiParent = this;
+                fHangSanXuat.Show();
             }
         }
     }

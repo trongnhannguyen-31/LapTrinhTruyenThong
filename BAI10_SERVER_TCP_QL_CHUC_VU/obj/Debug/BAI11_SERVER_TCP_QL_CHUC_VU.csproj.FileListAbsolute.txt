@@ -40,3 +40,14 @@ D:\NQ\LT_TruyenThong\DoAn_Git\BAI10_SERVER_TCP_QL_CHUC_VU\obj\Debug\BAI11_SERVER
 D:\NQ\LT_TruyenThong\DoAn_Git\BAI10_SERVER_TCP_QL_CHUC_VU\obj\Debug\BAI11_SERVER_TCP_QL_CHUC_VU.csproj.CoreCompileInputs.cache
 D:\NQ\LT_TruyenThong\DoAn_Git\BAI10_SERVER_TCP_QL_CHUC_VU\obj\Debug\BAI10_SERVER_TCP_QL_CHUC_VU.exe
 D:\NQ\LT_TruyenThong\DoAn_Git\BAI10_SERVER_TCP_QL_CHUC_VU\obj\Debug\BAI10_SERVER_TCP_QL_CHUC_VU.pdb
+E:\HocKy8\LapTrinhTruyenThong\DoAn\LTTT_DoAn\BAI10_SERVER_TCP_QL_CHUC_VU\bin\Debug\BAI10_SERVER_TCP_QL_CHUC_VU.exe.config
+E:\HocKy8\LapTrinhTruyenThong\DoAn\LTTT_DoAn\BAI10_SERVER_TCP_QL_CHUC_VU\bin\Debug\BAI10_SERVER_TCP_QL_CHUC_VU.exe
+E:\HocKy8\LapTrinhTruyenThong\DoAn\LTTT_DoAn\BAI10_SERVER_TCP_QL_CHUC_VU\bin\Debug\BAI10_SERVER_TCP_QL_CHUC_VU.pdb
+E:\HocKy8\LapTrinhTruyenThong\DoAn\LTTT_DoAn\BAI10_SERVER_TCP_QL_CHUC_VU\obj\Debug\BAI11_SERVER_TCP_QL_CHUC_VU.csproj.AssemblyReference.cache
+E:\HocKy8\LapTrinhTruyenThong\DoAn\LTTT_DoAn\BAI10_SERVER_TCP_QL_CHUC_VU\obj\Debug\BAI11_SERVER_TCP_QL_CHUC_VU.csproj.SuggestedBindingRedirects.cache
+E:\HocKy8\LapTrinhTruyenThong\DoAn\LTTT_DoAn\BAI10_SERVER_TCP_QL_CHUC_VU\obj\Debug\BAI10_SERVER_TCP_QL_CHUC_VU.Properties.Resources.resources
+E:\HocKy8\LapTrinhTruyenThong\DoAn\LTTT_DoAn\BAI10_SERVER_TCP_QL_CHUC_VU\obj\Debug\BAI10_SERVER_TCP_QL_CHUC_VU.Server.resources
+E:\HocKy8\LapTrinhTruyenThong\DoAn\LTTT_DoAn\BAI10_SERVER_TCP_QL_CHUC_VU\obj\Debug\BAI11_SERVER_TCP_QL_CHUC_VU.csproj.GenerateResource.cache
+E:\HocKy8\LapTrinhTruyenThong\DoAn\LTTT_DoAn\BAI10_SERVER_TCP_QL_CHUC_VU\obj\Debug\BAI11_SERVER_TCP_QL_CHUC_VU.csproj.CoreCompileInputs.cache
+E:\HocKy8\LapTrinhTruyenThong\DoAn\LTTT_DoAn\BAI10_SERVER_TCP_QL_CHUC_VU\obj\Debug\BAI10_SERVER_TCP_QL_CHUC_VU.exe
+E:\HocKy8\LapTrinhTruyenThong\DoAn\LTTT_DoAn\BAI10_SERVER_TCP_QL_CHUC_VU\obj\Debug\BAI10_SERVER_TCP_QL_CHUC_VU.pdb

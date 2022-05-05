@@ -58,6 +58,12 @@
     <Compile Include="frmDangNhap.Designer.cs">
       <DependentUpon>frmDangNhap.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmHangSanXuat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmHangSanXuat.Designer.cs">
+      <DependentUpon>frmHangSanXuat.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmKetNoi.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -82,12 +88,6 @@
     <Compile Include="frmSanPham.Designer.cs">
       <DependentUpon>frmSanPham.cs</DependentUpon>
     </Compile>
-    <Compile Include="frm_HangSanXuat.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frm_HangSanXuat.Designer.cs">
-      <DependentUpon>frm_HangSanXuat.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmChucVu.resx">
@@ -95,6 +95,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmDangNhap.resx">
       <DependentUpon>frmDangNhap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmHangSanXuat.resx">
+      <DependentUpon>frmHangSanXuat.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmKetNoi.resx">
       <DependentUpon>frmKetNoi.cs</DependentUpon>
@@ -107,9 +110,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmSanPham.resx">
       <DependentUpon>frmSanPham.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frm_HangSanXuat.resx">
-      <DependentUpon>frm_HangSanXuat.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

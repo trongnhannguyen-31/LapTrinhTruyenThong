@@ -93,7 +93,6 @@ namespace BAI10_CLIENT_TCP_QL_CHUC_VU
             BinaryFormatter bf1 = new BinaryFormatter();
             ms.Position = 0;
             return bf1.Deserialize(ms);
-
         }
 
         private void dgDSNhanVien_Click(object sender, EventArgs e)

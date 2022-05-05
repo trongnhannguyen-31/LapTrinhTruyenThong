@@ -103,7 +103,7 @@ namespace BAI10_SERVER_TCP_QL_CHUC_VU
                 {
                     //nhận biến chọn từ client để xử lý các sự kiện như load dữ liệu, thêm, xóa, cập nhật 
                     chon = int.Parse(sr.ReadLine());
-                  
+/*
                     //chọn = 1 là sự kiện khi client nhấn nút thêm
                     if (chon == 0)
                     {
@@ -190,7 +190,7 @@ namespace BAI10_SERVER_TCP_QL_CHUC_VU
                         //chuyển datatable sang dạng mảng byte --> rồi gởi sang client
                         clientSock.Send(SerializeData(table7));
 
-                    }
+                    }*/
 
                     //chọn = 7 lấy danh sách nhân viên, kiểm tra đăng nhập
                     if (chon == 7)
@@ -205,6 +205,15 @@ namespace BAI10_SERVER_TCP_QL_CHUC_VU
                         sw.WriteLine(tendangnhap);
                         sw.Flush();
 
+                    }
+
+                    if (chon == 6)
+                    {
+                        //tạo datatable lấy dữ liệu từ sql server
+                        DataTable table = getdataHangSanXuat();
+
+                        //chuyển datatable sang dạng mảng byte --> rồi gởi sang client
+                        clientSock.Send(SerializeData(table));
                     }
                 }
             }    
@@ -225,6 +234,7 @@ namespace BAI10_SERVER_TCP_QL_CHUC_VU
             return ms.ToArray();
         }
 
+        /*
         private DataTable getdataChucVu()
         {    
             string sTruyVan = "select * from chucvu";  
@@ -347,7 +357,7 @@ namespace BAI10_SERVER_TCP_QL_CHUC_VU
                 return 1;
             else
                 return 0;
-        }
+        }*/
 
         private int kiemtradangnhap(string tendangnhap, string matkhau)
         {
@@ -364,6 +374,17 @@ namespace BAI10_SERVER_TCP_QL_CHUC_VU
             else
                 return 0;
         }
-        
+
+        // Hãng sản xuất
+        private DataTable getdataHangSanXuat()
+        {
+            string sTruyVan = "select * from hangsanxuat";
+
+            SqlDataAdapter da = new SqlDataAdapter(sTruyVan, KetNoi);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+
+            return dt;
+        }
     }
 }
