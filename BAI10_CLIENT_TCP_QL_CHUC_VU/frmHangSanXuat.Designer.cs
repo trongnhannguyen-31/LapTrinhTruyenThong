@@ -42,6 +42,7 @@
             this.txtTimKiem = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dgDanhSachHang = new System.Windows.Forms.DataGridView();
+            this.btnThoat = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -119,6 +120,7 @@
             this.btnThem.TabIndex = 6;
             this.btnThem.Text = "Thêm";
             this.btnThem.UseVisualStyleBackColor = true;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // btnSua
             // 
@@ -129,6 +131,7 @@
             this.btnSua.TabIndex = 7;
             this.btnSua.Text = "Sửa";
             this.btnSua.UseVisualStyleBackColor = true;
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
             // btnXoa
             // 
@@ -139,6 +142,7 @@
             this.btnXoa.TabIndex = 8;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.UseVisualStyleBackColor = true;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // groupBox2
             // 
@@ -160,6 +164,7 @@
             this.btnTimKiem.TabIndex = 10;
             this.btnTimKiem.Text = "Tìm kiếm";
             this.btnTimKiem.UseVisualStyleBackColor = true;
+            this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
             // 
             // txtTimKiem
             // 
@@ -173,7 +178,7 @@
             this.groupBox3.Controls.Add(this.dgDanhSachHang);
             this.groupBox3.Location = new System.Drawing.Point(12, 350);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(752, 158);
+            this.groupBox3.Size = new System.Drawing.Size(752, 226);
             this.groupBox3.TabIndex = 10;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Thông tin chung";
@@ -185,14 +190,27 @@
             this.dgDanhSachHang.Name = "dgDanhSachHang";
             this.dgDanhSachHang.RowHeadersWidth = 62;
             this.dgDanhSachHang.RowTemplate.Height = 28;
-            this.dgDanhSachHang.Size = new System.Drawing.Size(740, 123);
+            this.dgDanhSachHang.Size = new System.Drawing.Size(740, 191);
             this.dgDanhSachHang.TabIndex = 0;
+            this.dgDanhSachHang.Click += new System.EventHandler(this.dgDanhSachHang_Click_1);
+            // 
+            // btnThoat
+            // 
+            this.btnThoat.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThoat.Location = new System.Drawing.Point(615, 267);
+            this.btnThoat.Name = "btnThoat";
+            this.btnThoat.Size = new System.Drawing.Size(150, 49);
+            this.btnThoat.TabIndex = 11;
+            this.btnThoat.Text = "Thoát";
+            this.btnThoat.UseVisualStyleBackColor = true;
+            this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
             // 
             // frmHangSanXuat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(791, 520);
+            this.ClientSize = new System.Drawing.Size(791, 588);
+            this.Controls.Add(this.btnThoat);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnXoa);
@@ -232,5 +250,6 @@
         private System.Windows.Forms.TextBox txtTimKiem;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.DataGridView dgDanhSachHang;
+        private System.Windows.Forms.Button btnThoat;
     }
 }
