@@ -39,8 +39,8 @@ namespace BAI10_SERVER_TCP_QL_CHUC_VU
         public void MoKetNoi()
         {
             //   s = @"Data Source=DESKTOP-T84NIPD\MAYAO;Initial Catalog=QLNV;Integrated Security=True; User ID=sa;password=123456";
-            //s = @"Data Source=DESKTOP-BV0HRRC\SQLEXPRESS;Initial Catalog=QLLaptop;Integrated Security=True";
-            s = @"Data Source=MSI\SQLEXPRESS;Initial Catalog=QLNV;Integrated Security=True";
+            s = @"Data Source=DESKTOP-BV0HRRC\SQLEXPRESS;Initial Catalog=QLLaptop;Integrated Security=True";
+            //s = @"Data Source=MSI\SQLEXPRESS;Initial Catalog=QLNV;Integrated Security=True";
             //s = @"Data Source=MAY1\SQLEXPRESS;Initial Catalog=QLNV;Integrated Security=True";
 
             KetNoi = new SqlConnection(s);
@@ -207,6 +207,7 @@ namespace BAI10_SERVER_TCP_QL_CHUC_VU
 
                     }
 
+                    #region HangSanXuat
                     if (chon == 6)
                     {
                         //tạo datatable lấy dữ liệu từ sql server
@@ -272,6 +273,20 @@ namespace BAI10_SERVER_TCP_QL_CHUC_VU
                         //chuyển datatable sang dạng mảng byte --> rồi gởi sang client
                         clientSock.Send(SerializeData(table1));
                     }
+
+                    #endregion
+
+                    #region DonHang
+                    // lấy dữ liệu khi chọn = 9
+                    if (chon == 9)
+                    {
+                        //tạo datatable lấy dữ liệu từ sql server
+                        DataTable table = getdataDonHang();
+
+                        //chuyển datatable sang dạng mảng byte --> rồi gởi sang client
+                        clientSock.Send(SerializeData(table));
+                    }
+                    #endregion
                 }
             }    
             
@@ -552,6 +567,20 @@ namespace BAI10_SERVER_TCP_QL_CHUC_VU
             string sTruyVan = string.Format(@"select * from hangsanxuat where tenhsx like '%{0}%'", tenhsxtim);
             //MessageBox.Show("sql: "+sTruyVan);
             SqlDataAdapter da = new SqlDataAdapter(sTruyVan, KetNoi);
+            da.Fill(dt);
+
+            return dt;
+        }
+        #endregion
+
+        // Đơn Hàng
+        #region GetDataDonHang
+        private DataTable getdataDonHang()
+        {
+            string sTruyVan = "select * from donhang";
+
+            SqlDataAdapter da = new SqlDataAdapter(sTruyVan, KetNoi);
+            DataTable dt = new DataTable();
             da.Fill(dt);
 
             return dt;

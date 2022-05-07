@@ -44,6 +44,9 @@ namespace BAI10_CLIENT_TCP_QL_CHUC_VU
         // form HangSanXuat
         frmHangSanXuat fHangSanXuat;
 
+        // form DonHang
+        //frmDonHang fDonHang;
+
 
         string tennguoidung = "";
         bool kiemtradangnhap = false;
@@ -80,6 +83,7 @@ namespace BAI10_CLIENT_TCP_QL_CHUC_VU
                 i_quatrinhluong.Enabled = true;
                 i_dmSanPham.Enabled = true;
                 i_dmHangSanXuat.Enabled = true;
+                i_dmDonHang.Enabled = true;
             }
             else
             {
@@ -95,6 +99,8 @@ namespace BAI10_CLIENT_TCP_QL_CHUC_VU
                 i_quatrinhluong.Enabled = false;
                 i_dmSanPham.Enabled = false;
                 i_dmHangSanXuat.Enabled= false;
+                i_dmDonHang.Enabled = false;
+
             }
 
         }
@@ -230,6 +236,16 @@ namespace BAI10_CLIENT_TCP_QL_CHUC_VU
                 fHangSanXuat.MdiParent = this;
                 fHangSanXuat.Show();
             }
+        }
+
+        private void i_dmDonHang_Click(object sender, EventArgs e)
+        {
+            /*if (fDonHang == null || fDonHang.IsDisposed)
+            {
+                fDonHang = new frmDonHang();
+                fDonHang.MdiParent = this;
+                fDonHang.Show();
+            }*/
         }
     }
 }

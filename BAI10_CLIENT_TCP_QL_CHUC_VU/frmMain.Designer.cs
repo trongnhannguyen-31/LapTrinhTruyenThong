@@ -44,6 +44,7 @@ namespace BAI10_CLIENT_TCP_QL_CHUC_VU
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.stt_hoten = new System.Windows.Forms.ToolStripStatusLabel();
             this.stt_thoigian = new System.Windows.Forms.ToolStripStatusLabel();
+            this.i_dmDonHang = new System.Windows.Forms.ToolStripMenuItem();
             this.menuMain.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -74,7 +75,7 @@ namespace BAI10_CLIENT_TCP_QL_CHUC_VU
             // i_dangnhap
             // 
             this.i_dangnhap.Name = "i_dangnhap";
-            this.i_dangnhap.Size = new System.Drawing.Size(202, 34);
+            this.i_dangnhap.Size = new System.Drawing.Size(270, 34);
             this.i_dangnhap.Text = "Đăng nhập";
             this.i_dangnhap.Click += new System.EventHandler(this.i_dangnhap_Click);
             // 
@@ -82,7 +83,7 @@ namespace BAI10_CLIENT_TCP_QL_CHUC_VU
             // 
             this.i_dangxuat.Enabled = false;
             this.i_dangxuat.Name = "i_dangxuat";
-            this.i_dangxuat.Size = new System.Drawing.Size(202, 34);
+            this.i_dangxuat.Size = new System.Drawing.Size(270, 34);
             this.i_dangxuat.Text = "Đăng xuất";
             this.i_dangxuat.Click += new System.EventHandler(this.i_dangxuat_Click);
             // 
@@ -92,7 +93,8 @@ namespace BAI10_CLIENT_TCP_QL_CHUC_VU
             this.i_dmChucVu,
             this.i_dmNhanVien,
             this.i_dmSanPham,
-            this.i_dmHangSanXuat});
+            this.i_dmHangSanXuat,
+            this.i_dmDonHang});
             this.danhMucToolStripMenuItem.Name = "danhMucToolStripMenuItem";
             this.danhMucToolStripMenuItem.Size = new System.Drawing.Size(109, 29);
             this.danhMucToolStripMenuItem.Text = "Danh mục";
@@ -171,6 +173,13 @@ namespace BAI10_CLIENT_TCP_QL_CHUC_VU
             this.stt_thoigian.Size = new System.Drawing.Size(176, 25);
             this.stt_thoigian.Text = "Thời gian đăng nhập";
             // 
+            // i_dmDonHang
+            // 
+            this.i_dmDonHang.Name = "i_dmDonHang";
+            this.i_dmDonHang.Size = new System.Drawing.Size(270, 34);
+            this.i_dmDonHang.Text = "Đơn Hàng";
+            this.i_dmDonHang.Click += new System.EventHandler(this.i_dmDonHang_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -209,5 +218,6 @@ namespace BAI10_CLIENT_TCP_QL_CHUC_VU
         private System.Windows.Forms.ToolStripStatusLabel stt_thoigian;
         private System.Windows.Forms.ToolStripMenuItem i_dmSanPham;
         private System.Windows.Forms.ToolStripMenuItem i_dmHangSanXuat;
+        private System.Windows.Forms.ToolStripMenuItem i_dmDonHang;
     }
 }
