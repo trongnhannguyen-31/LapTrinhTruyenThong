@@ -36,8 +36,8 @@ E:\HocKy8\LapTrinhTruyenThong\DoAn\LTTT_DoAn\BAI10_CLIENT_TCP_QL_CHUC_VU\bin\Deb
 E:\HocKy8\LapTrinhTruyenThong\DoAn\LTTT_DoAn\BAI10_CLIENT_TCP_QL_CHUC_VU\bin\Debug\BAI10_CLIENT_TCP_QL_CHUC_VU.pdb
 E:\HocKy8\LapTrinhTruyenThong\DoAn\LTTT_DoAn\BAI10_CLIENT_TCP_QL_CHUC_VU\obj\Debug\BAI_CLIENT_TCP_QL_BAN_MAYTINH.csproj.AssemblyReference.cache
 E:\HocKy8\LapTrinhTruyenThong\DoAn\LTTT_DoAn\BAI10_CLIENT_TCP_QL_CHUC_VU\obj\Debug\BAI_CLIENT_TCP_QL_BAN_MAYTINH.csproj.SuggestedBindingRedirects.cache
-E:\HocKy8\LapTrinhTruyenThong\DoAn\LTTT_DoAn\BAI10_CLIENT_TCP_QL_CHUC_VU\obj\Debug\BAI10_CLIENT_TCP_QL_CHUC_VU.frmChucVu.resources
 E:\HocKy8\LapTrinhTruyenThong\DoAn\LTTT_DoAn\BAI10_CLIENT_TCP_QL_CHUC_VU\obj\Debug\BAI10_CLIENT_TCP_QL_CHUC_VU.frmDangNhap.resources
+E:\HocKy8\LapTrinhTruyenThong\DoAn\LTTT_DoAn\BAI10_CLIENT_TCP_QL_CHUC_VU\obj\Debug\BAI10_CLIENT_TCP_QL_CHUC_VU.frmDonHang.resources
 E:\HocKy8\LapTrinhTruyenThong\DoAn\LTTT_DoAn\BAI10_CLIENT_TCP_QL_CHUC_VU\obj\Debug\BAI10_CLIENT_TCP_QL_CHUC_VU.frmHangSanXuat.resources
 E:\HocKy8\LapTrinhTruyenThong\DoAn\LTTT_DoAn\BAI10_CLIENT_TCP_QL_CHUC_VU\obj\Debug\BAI10_CLIENT_TCP_QL_CHUC_VU.frmKetNoi.resources
 E:\HocKy8\LapTrinhTruyenThong\DoAn\LTTT_DoAn\BAI10_CLIENT_TCP_QL_CHUC_VU\obj\Debug\BAI10_CLIENT_TCP_QL_CHUC_VU.frmMain.resources

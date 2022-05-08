@@ -277,14 +277,20 @@ namespace BAI10_SERVER_TCP_QL_CHUC_VU
                     #endregion
 
                     #region DonHang
-                    // lấy dữ liệu khi chọn = 9
-                    if (chon == 9)
+                    //chọn = 10 là sự kiện khi client nhấn nút thêm
+                    if (chon == 10)
                     {
-                        //tạo datatable lấy dữ liệu từ sql server
-                        DataTable table = getdataDonHang();
+                        //tạo datatable lấy dữ liệu table chức vụ từ sql server
+                        DataTable table6 = getdataDonHang();
 
                         //chuyển datatable sang dạng mảng byte --> rồi gởi sang client
-                        clientSock.Send(SerializeData(table));
+                        clientSock.Send(SerializeData(table6));
+
+                        //tạo datatable lấy dữ liệu table nhân viên từ sql server
+                        DataTable table7 = getdataSanPham();
+
+                        //chuyển datatable sang dạng mảng byte --> rồi gởi sang client
+                        clientSock.Send(SerializeData(table7));
                     }
                     #endregion
                 }
@@ -578,6 +584,20 @@ namespace BAI10_SERVER_TCP_QL_CHUC_VU
         private DataTable getdataDonHang()
         {
             string sTruyVan = "select * from donhang";
+
+            SqlDataAdapter da = new SqlDataAdapter(sTruyVan, KetNoi);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+
+            return dt;
+        }
+        #endregion
+
+        // Sản Phẩm
+        #region GetDataSanPham
+        private DataTable getdataSanPham()
+        {
+            string sTruyVan = "select * from sanpham";
 
             SqlDataAdapter da = new SqlDataAdapter(sTruyVan, KetNoi);
             DataTable dt = new DataTable();

@@ -33,7 +33,7 @@ namespace BAI10_CLIENT_TCP_QL_CHUC_VU
         int chon = 0;
 
 
-        frmChucVu fCV;
+        //frmChucVu fCV;
         frmNhanVien fNV;
         frmKetNoi fKN;
         frmDangNhap fDN;
@@ -45,7 +45,7 @@ namespace BAI10_CLIENT_TCP_QL_CHUC_VU
         frmHangSanXuat fHangSanXuat;
 
         // form DonHang
-        //frmDonHang fDonHang;
+        frmDonHang fDonHang;
 
 
         string tennguoidung = "";
@@ -107,12 +107,12 @@ namespace BAI10_CLIENT_TCP_QL_CHUC_VU
 
         private void i_dmChucVu_Click(object sender, EventArgs e)
         { 
-            if (fCV == null || fCV.IsDisposed)
+            /*if (fCV == null || fCV.IsDisposed)
             {
                 fCV = new frmChucVu();
                 fCV.MdiParent = this;
                 fCV.Show();
-            }
+            }*/
         }
 
         private void kếtNốiServerToolStripMenuItem_Click(object sender, EventArgs e)
@@ -240,12 +240,12 @@ namespace BAI10_CLIENT_TCP_QL_CHUC_VU
 
         private void i_dmDonHang_Click(object sender, EventArgs e)
         {
-            /*if (fDonHang == null || fDonHang.IsDisposed)
+            if (fDonHang == null || fDonHang.IsDisposed)
             {
                 fDonHang = new frmDonHang();
                 fDonHang.MdiParent = this;
                 fDonHang.Show();
-            }*/
+            }
         }
     }
 }
