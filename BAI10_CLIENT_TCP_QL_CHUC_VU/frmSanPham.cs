@@ -32,7 +32,7 @@ namespace BAI10_CLIENT_TCP_QL_CHUC_VU
                 sr = new StreamReader(frmKetNoi.ns);
                 sw = new StreamWriter(frmKetNoi.ns);
 
-                chon = 11;
+                chon = 20;
 
                 sr = new StreamReader(frmKetNoi.ns);
                 sw = new StreamWriter(frmKetNoi.ns);
