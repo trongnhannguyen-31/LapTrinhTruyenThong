@@ -36,7 +36,7 @@ namespace BAI10_CLIENT_TCP_QL_CHUC_VU
                 sr = new StreamReader(frmKetNoi.ns);
                 sw = new StreamWriter(frmKetNoi.ns);
 
-                chon = 10;
+                chon = 11;
 
                 sr = new StreamReader(frmKetNoi.ns);
                 sw = new StreamWriter(frmKetNoi.ns);
@@ -45,32 +45,39 @@ namespace BAI10_CLIENT_TCP_QL_CHUC_VU
                 sw.Flush();
 
 
-                //tạo mảng byte để nhận table chuc vu từ máy chủ
-                //byte[] data_sanpham = new byte[1024 * 5000];
 
-                //tạo mảng byte để nhận table nhan vien từ máy chủ
+                //tạo mảng byte để nhận table chuc vu từ máy chủ
                 byte[] data_donhang = new byte[1024 * 5000];
 
+                //tạo mảng byte để nhận table nhan vien từ máy chủ
+                byte[] data_sanpham = new byte[1024 * 5000];
 
-                /*//sử dụng biến static clientSockt của form Kết Nối
-                frmKetNoi.clientSock.Receive(data_sanpham);
-                //chuyển dữ liệu vừa nhận dạng mảng byte sang kiểu object rồi ép kiểu sang datatable
-                DataTable dt_sanpham = (DataTable)DeserializeData(data_sanpham);*/
+
 
                 //sử dụng biến static clientSockt của form Kết Nối
                 frmKetNoi.clientSock.Receive(data_donhang);
                 //chuyển dữ liệu vừa nhận dạng mảng byte sang kiểu object rồi ép kiểu sang datatable
                 DataTable dt_donhang = (DataTable)DeserializeData(data_donhang);
 
+                //sử dụng biến static clientSockt của form Kết Nối
+                frmKetNoi.clientSock.Receive(data_sanpham);
+
+                //chuyển dữ liệu vừa nhận dạng mảng byte sang kiểu object rồi ép kiểu sang datatable
+                DataTable dt_sanpham = (DataTable)DeserializeData(data_sanpham);
+
+
+
+                cmbTenSanPham.DataSource = dt_sanpham;
+                cmbTenSanPham.DisplayMember = "tensp";
+                cmbTenSanPham.ValueMember = "masp";
+
+                //dgDSSanPham.Columns["tensp"].HeaderText = "Tên sản phẩm";
                 //đưa datatable vào dataGridView
                 dgDSDonHang.DataSource = dt_donhang;
 
-                /*cmbTenSanPham.DataSource = dt_sanpham;
-                cmbTenSanPham.DisplayMember = "tensp";
-                cmbTenSanPham.ValueMember = "masp";*/
 
 
-                
+
 
                 //clientSock.Close();
             }
@@ -101,10 +108,9 @@ namespace BAI10_CLIENT_TCP_QL_CHUC_VU
             txtTongTien.Text = r.Cells["tongtien"].Value.ToString();
         }
 
-        // Tìm đơn hàng theo mã
         public bool timDonHangTheoMaDH(string madhtim)
         {
-            chon = 11;
+            chon = 12;
 
             sr = new StreamReader(frmKetNoi.ns);
             sw = new StreamWriter(frmKetNoi.ns);
@@ -124,7 +130,7 @@ namespace BAI10_CLIENT_TCP_QL_CHUC_VU
         private void btnThem_Click(object sender, EventArgs e)
         {
             // Kiểm tra dữ liệu có bị bỏ trống 
-            if (txtMaDH.Text == "" || txtTenKH.Text == "" || txtSoLuong.Text == "" || cmbTenSanPham.Text == "" || txtTongTien.Text == "")
+            if (txtMaDH.Text == "" || txtTenKH.Text == "")
             {
                 MessageBox.Show("Vui lòng nhập đầy đủ dữ liệu!");
                 return;
@@ -141,24 +147,26 @@ namespace BAI10_CLIENT_TCP_QL_CHUC_VU
                 return;
             }
 
-            chon = 12;
+            chon = 13;
             string madh = txtMaDH.Text;
-            string khachhang = txtTenKH.Text;
-            string tensp = cmbTenSanPham.Text;
-            string soluong = txtSoLuong.Text;
-            string tongtien = txtTongTien.Text;
-            string ngaylap = dtmNgayLap.Text;
+            string khachang = txtTenKH.Text;
+            string tensp = cmbTenSanPham.SelectedValue.ToString();
+            DateTime ngaylap = DateTime.Parse(dtmNgayLap.Text);
+            float tongtien = float.Parse(txtTongTien.Text);
+            float soluong = float.Parse(txtSoLuong.Text);
+
+
             //thêm chức vụ            
             sr = new StreamReader(frmKetNoi.ns);
             sw = new StreamWriter(frmKetNoi.ns);
 
             sw.WriteLine(chon);
             sw.WriteLine(madh);
-            sw.WriteLine(khachhang);
+            sw.WriteLine(khachang);
             sw.WriteLine(tensp);
-            sw.WriteLine(soluong);
-            sw.WriteLine(tongtien);
             sw.WriteLine(ngaylap);
+            sw.WriteLine(tongtien);
+            sw.WriteLine(soluong);
 
             sw.Flush();
 

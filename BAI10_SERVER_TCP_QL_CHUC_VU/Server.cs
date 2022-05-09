@@ -39,8 +39,8 @@ namespace BAI10_SERVER_TCP_QL_CHUC_VU
         public void MoKetNoi()
         {
             //   s = @"Data Source=DESKTOP-T84NIPD\MAYAO;Initial Catalog=QLNV;Integrated Security=True; User ID=sa;password=123456";
-            //s = @"Data Source=DESKTOP-BV0HRRC\SQLEXPRESS;Initial Catalog=QLLaptop;Integrated Security=True";
-            s = @"Data Source=MSI\SQLEXPRESS;Initial Catalog=QLNV;Integrated Security=True";
+            s = @"Data Source=DESKTOP-BV0HRRC\SQLEXPRESS;Initial Catalog=QLLaptop;Integrated Security=True";
+            //s = @"Data Source=MSI\SQLEXPRESS;Initial Catalog=QLNV;Integrated Security=True";
             //s = @"Data Source=MAY1\SQLEXPRESS;Initial Catalog=QLNV;Integrated Security=True";
 
             KetNoi = new SqlConnection(s);
@@ -277,51 +277,53 @@ namespace BAI10_SERVER_TCP_QL_CHUC_VU
                     #endregion
 
                     #region DonHang
-                    //chọn = 10 là sự kiện khi client nhấn nút thêm
-                    if (chon == 10)
-                    {
-                        //tạo datatable lấy dữ liệu table chức vụ từ sql server
-                        DataTable table6 = getdataSanPham();
-
-                        //chuyển datatable sang dạng mảng byte --> rồi gởi sang client
-                        clientSock.Send(SerializeData(table6));
-
-                        //tạo datatable lấy dữ liệu table nhân viên từ sql server
-                        DataTable table7 = getdataSanPham();
-
-                        //chuyển datatable sang dạng mảng byte --> rồi gởi sang client
-                        clientSock.Send(SerializeData(table7));
-                    }
-
+                    //chọn = 11 là sự kiện khi client nhấn nút thêm
                     if (chon == 11)
                     {
+                        //tạo datatable lấy dữ liệu table chức vụ từ sql server
+                        DataTable table100 = getdataDonHang();
+
+                        //chuyển datatable sang dạng mảng byte --> rồi gởi sang client
+                        clientSock.Send(SerializeData(table100));
+
+                        //tạo datatable lấy dữ liệu table nhân viên từ sql server
+                        DataTable table101 = getdataSanPham();
+
+                        //chuyển datatable sang dạng mảng byte --> rồi gởi sang client
+                        clientSock.Send(SerializeData(table101));
+
+                    }
+
+                    //chọn = 5 tìm chức vụ theo macv
+                    if (chon == 12)
+                    {
                         string madhtim = sr.ReadLine();
-                        int kq = timdonhangtheomadata(madhtim);
+                        int kq = timmadonhangdata(madhtim);
 
                         sw.WriteLine(kq);
                         sw.Flush();
                     }
 
-                    if (chon == 12)
+                    if (chon == 13)
                     {
                         //nhận macv, tencv, hspc từ client
                         string madh = sr.ReadLine();
                         string khachhang = sr.ReadLine();
                         string masp = sr.ReadLine();
-                        float soluong = float.Parse(sr.ReadLine());
-                        float tongtien = float.Parse(sr.ReadLine());
                         DateTime ngaylap = DateTime.Parse(sr.ReadLine());
+                        float tongtien = float.Parse(sr.ReadLine());
+                        float soluong = float.Parse(sr.ReadLine());
 
-                        DataTable table1 = themdonhangdata(madh, khachhang, masp, ngaylap, tongtien, soluong);
+                        DataTable table100 = themdonhangdata(madh, khachhang, masp, ngaylap, tongtien, soluong);
 
                         //chuyển datatable sang dạng mảng byte --> rồi gởi sang client
-                        clientSock.Send(SerializeData(table1));
+                        clientSock.Send(SerializeData(table100));
                     }
 
                     #endregion
 
                     #region SanPham
-                    //chọn = 11 là sự kiện khi client nhấn nút thêm
+                    //chọn = 20 là sự kiện khi client nhấn nút thêm
                     if (chon == 20)
                     {
                         //tạo datatable lấy dữ liệu table chức vụ từ sql server
@@ -665,7 +667,7 @@ namespace BAI10_SERVER_TCP_QL_CHUC_VU
         #endregion
 
         #region TimDonHangTheoMa
-        private int timdonhangtheomadata(string madhtim)
+        private int timmadonhangdata(string madhtim)
         {
             int kq = 1;
             DataTable dt = new DataTable();
@@ -679,6 +681,32 @@ namespace BAI10_SERVER_TCP_QL_CHUC_VU
                 return 1;
             else
                 return 0;
+        }
+        #endregion
+
+        #region SuaDonHang
+        private DataTable capnhadonhangdata(string madh, string khachhang, string masp, DateTime ngaylap, float tongtien, float soluong)
+        {
+            bool kt = false;
+            DataTable dt = new DataTable();
+            string sTruyVan = string.Format(@"update donhang set khachhang=N'{0}', masp=N'{1}', ngaylap=N'{2}', tongtien=N'{3}', soluong=N'{4}'  where madh='{5}'", khachhang, masp, ngaylap, tongtien, soluong);
+            try
+            {
+                SqlCommand cm = new SqlCommand(sTruyVan, KetNoi);
+                cm.ExecuteNonQuery();
+                kt = true;
+            }
+            catch (Exception ex)
+            {
+                kt = false;
+            }
+            if (kt == true)
+            {
+                string sTruyVan2 = "select * from hangsanxuat";
+                SqlDataAdapter da = new SqlDataAdapter(sTruyVan2, KetNoi);
+                da.Fill(dt);
+            }
+            return dt;
         }
         #endregion
 
