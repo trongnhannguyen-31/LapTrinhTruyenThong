@@ -39,8 +39,8 @@ namespace BAI10_SERVER_TCP_QL_CHUC_VU
         public void MoKetNoi()
         {
             //   s = @"Data Source=DESKTOP-T84NIPD\MAYAO;Initial Catalog=QLNV;Integrated Security=True; User ID=sa;password=123456";
-            s = @"Data Source=DESKTOP-BV0HRRC\SQLEXPRESS;Initial Catalog=QLLaptop;Integrated Security=True";
-            //s = @"Data Source=MSI\SQLEXPRESS;Initial Catalog=QLNV;Integrated Security=True";
+            //s = @"Data Source=DESKTOP-BV0HRRC\SQLEXPRESS;Initial Catalog=QLLaptop;Integrated Security=True";
+            s = @"Data Source=MSI\SQLEXPRESS;Initial Catalog=QLNV;Integrated Security=True";
             //s = @"Data Source=MAY1\SQLEXPRESS;Initial Catalog=QLNV;Integrated Security=True";
 
             KetNoi = new SqlConnection(s);
@@ -281,7 +281,7 @@ namespace BAI10_SERVER_TCP_QL_CHUC_VU
                     if (chon == 10)
                     {
                         //tạo datatable lấy dữ liệu table chức vụ từ sql server
-                        DataTable table6 = getdataDonHang();
+                        DataTable table6 = getdataSanPham();
 
                         //chuyển datatable sang dạng mảng byte --> rồi gởi sang client
                         clientSock.Send(SerializeData(table6));
@@ -318,6 +318,25 @@ namespace BAI10_SERVER_TCP_QL_CHUC_VU
                         clientSock.Send(SerializeData(table1));
                     }
 
+                    #endregion
+
+                    #region SanPham
+                    //chọn = 11 là sự kiện khi client nhấn nút thêm
+                    if (chon == 11)
+                    {
+                        //tạo datatable lấy dữ liệu table chức vụ từ sql server
+                        DataTable table11 = getdataHangSanXuat();
+
+                        //chuyển datatable sang dạng mảng byte --> rồi gởi sang client
+                        clientSock.Send(SerializeData(table11));
+
+                        //tạo datatable lấy dữ liệu table nhân viên từ sql server
+                        DataTable table12 = getdataSanPham();
+
+                        //chuyển datatable sang dạng mảng byte --> rồi gởi sang client
+                        clientSock.Send(SerializeData(table12));
+
+                    }
                     #endregion
                 }
             }    

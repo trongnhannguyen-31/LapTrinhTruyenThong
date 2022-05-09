@@ -16,7 +16,6 @@ E:\HocKy8\LapTrinhTruyenThong\DoAn\HUONG DAN DO AN C# SOCKET OK\BAI10_CLIENT_TCP
 E:\HocKy8\LapTrinhTruyenThong\DoAn\HUONG DAN DO AN C# SOCKET OK\BAI10_CLIENT_TCP_QL_CHUC_VU\obj\Debug\BAI10_CLIENT_TCP_QL_CHUC_VU.pdb
 E:\HocKy8\LapTrinhTruyenThong\DoAn\HUONG DAN DO AN C# SOCKET OK\BAI10_CLIENT_TCP_QL_CHUC_VU\obj\Debug\BAI10_CLIENT_TCP_QL_CHUC_VU.frm_HangSanXuat.resources
 D:\NQ\LT_TruyenThong\DoAn_Git\BAI10_CLIENT_TCP_QL_CHUC_VU\obj\Debug\BAI_CLIENT_TCP_QL_BAN_MAYTINH.csproj.AssemblyReference.cache
-D:\NQ\LT_TruyenThong\DoAn_Git\BAI10_CLIENT_TCP_QL_CHUC_VU\obj\Debug\BAI10_CLIENT_TCP_QL_CHUC_VU.frmChucVu.resources
 D:\NQ\LT_TruyenThong\DoAn_Git\BAI10_CLIENT_TCP_QL_CHUC_VU\obj\Debug\BAI10_CLIENT_TCP_QL_CHUC_VU.frmDangNhap.resources
 D:\NQ\LT_TruyenThong\DoAn_Git\BAI10_CLIENT_TCP_QL_CHUC_VU\obj\Debug\BAI10_CLIENT_TCP_QL_CHUC_VU.frmHangSanXuat.resources
 D:\NQ\LT_TruyenThong\DoAn_Git\BAI10_CLIENT_TCP_QL_CHUC_VU\obj\Debug\BAI10_CLIENT_TCP_QL_CHUC_VU.frmKetNoi.resources
@@ -48,3 +47,4 @@ E:\HocKy8\LapTrinhTruyenThong\DoAn\LTTT_DoAn\BAI10_CLIENT_TCP_QL_CHUC_VU\obj\Deb
 E:\HocKy8\LapTrinhTruyenThong\DoAn\LTTT_DoAn\BAI10_CLIENT_TCP_QL_CHUC_VU\obj\Debug\BAI_CLIENT_TCP_QL_BAN_MAYTINH.csproj.CoreCompileInputs.cache
 E:\HocKy8\LapTrinhTruyenThong\DoAn\LTTT_DoAn\BAI10_CLIENT_TCP_QL_CHUC_VU\obj\Debug\BAI10_CLIENT_TCP_QL_CHUC_VU.exe
 E:\HocKy8\LapTrinhTruyenThong\DoAn\LTTT_DoAn\BAI10_CLIENT_TCP_QL_CHUC_VU\obj\Debug\BAI10_CLIENT_TCP_QL_CHUC_VU.pdb
+D:\NQ\LT_TruyenThong\DoAn_Git\BAI10_CLIENT_TCP_QL_CHUC_VU\obj\Debug\BAI10_CLIENT_TCP_QL_CHUC_VU.frmDonHang.resources

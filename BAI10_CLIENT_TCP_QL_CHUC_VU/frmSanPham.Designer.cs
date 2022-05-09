@@ -55,8 +55,8 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgDSSanPham = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtTimKiem = new System.Windows.Forms.TextBox();
             this.btnTimkiem = new System.Windows.Forms.Button();
-            this.textBox7 = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgDSSanPham)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -114,6 +114,7 @@
             this.btnThem.TabIndex = 5;
             this.btnThem.Text = "Thêm";
             this.btnThem.UseVisualStyleBackColor = true;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // btnSua
             // 
@@ -145,7 +146,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(399, 47);
+            this.label4.Location = new System.Drawing.Point(399, 53);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(108, 20);
             this.label4.TabIndex = 9;
@@ -155,7 +156,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(399, 82);
+            this.label5.Location = new System.Drawing.Point(403, 82);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(44, 20);
             this.label5.TabIndex = 10;
@@ -288,13 +289,14 @@
             this.dgDSSanPham.Name = "dgDSSanPham";
             this.dgDSSanPham.RowHeadersWidth = 51;
             this.dgDSSanPham.RowTemplate.Height = 24;
+            this.dgDSSanPham.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgDSSanPham.Size = new System.Drawing.Size(845, 291);
             this.dgDSSanPham.TabIndex = 0;
             this.dgDSSanPham.Click += new System.EventHandler(this.dgDSSanPham_Click);
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.textBox7);
+            this.groupBox2.Controls.Add(this.txtTimKiem);
             this.groupBox2.Controls.Add(this.btnTimkiem);
             this.groupBox2.Location = new System.Drawing.Point(24, 211);
             this.groupBox2.Name = "groupBox2";
@@ -302,6 +304,14 @@
             this.groupBox2.TabIndex = 25;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Tìm kiếm";
+            // 
+            // txtTimKiem
+            // 
+            this.txtTimKiem.Location = new System.Drawing.Point(104, 21);
+            this.txtTimKiem.Name = "txtTimKiem";
+            this.txtTimKiem.Size = new System.Drawing.Size(499, 22);
+            this.txtTimKiem.TabIndex = 1;
+            this.txtTimKiem.Text = "Nhập tên sản phẩm";
             // 
             // btnTimkiem
             // 
@@ -311,14 +321,7 @@
             this.btnTimkiem.TabIndex = 0;
             this.btnTimkiem.Text = "Tìm kiếm";
             this.btnTimkiem.UseVisualStyleBackColor = true;
-            // 
-            // textBox7
-            // 
-            this.textBox7.Location = new System.Drawing.Point(104, 21);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(499, 22);
-            this.textBox7.TabIndex = 1;
-            this.textBox7.Text = "Nhập tên sản phẩm";
+            this.btnTimkiem.Click += new System.EventHandler(this.btnTimkiem_Click);
             // 
             // frmSanPham
             // 
@@ -393,6 +396,6 @@
         private System.Windows.Forms.DataGridView dgDSSanPham;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btnTimkiem;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox txtTimKiem;
     }
 }
