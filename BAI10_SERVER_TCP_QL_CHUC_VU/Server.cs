@@ -292,6 +292,32 @@ namespace BAI10_SERVER_TCP_QL_CHUC_VU
                         //chuyển datatable sang dạng mảng byte --> rồi gởi sang client
                         clientSock.Send(SerializeData(table7));
                     }
+
+                    if (chon == 11)
+                    {
+                        string madhtim = sr.ReadLine();
+                        int kq = timdonhangtheomadata(madhtim);
+
+                        sw.WriteLine(kq);
+                        sw.Flush();
+                    }
+
+                    if (chon == 12)
+                    {
+                        //nhận macv, tencv, hspc từ client
+                        string madh = sr.ReadLine();
+                        string khachhang = sr.ReadLine();
+                        string masp = sr.ReadLine();
+                        float soluong = float.Parse(sr.ReadLine());
+                        float tongtien = float.Parse(sr.ReadLine());
+                        DateTime ngaylap = DateTime.Parse(sr.ReadLine());
+
+                        DataTable table1 = themdonhangdata(madh, khachhang, masp, ngaylap, tongtien, soluong);
+
+                        //chuyển datatable sang dạng mảng byte --> rồi gởi sang client
+                        clientSock.Send(SerializeData(table1));
+                    }
+
                     #endregion
                 }
             }    
@@ -590,6 +616,50 @@ namespace BAI10_SERVER_TCP_QL_CHUC_VU
             da.Fill(dt);
 
             return dt;
+        }
+        #endregion
+
+        #region ThemDonHang
+        private DataTable themdonhangdata(string madh, string khachhang, string masp, DateTime ngaylap, float tongtien, float soluong)
+        {
+            bool kt = false;
+            DataTable dt = new DataTable();
+            string sTruyVan = string.Format(@"insert into donhang values(N'{0}',N'{1}',N'{2}',N'{3}',N'{4}',N'{5}')", madh, khachhang, masp, ngaylap, tongtien, soluong);
+            try
+            {
+                SqlCommand cm = new SqlCommand(sTruyVan, KetNoi);
+                cm.ExecuteNonQuery();
+                kt = true;
+            }
+            catch (Exception ex)
+            {
+                kt = false;
+            }
+            if (kt == true)
+            {
+                string sTruyVan2 = "select * from donhang";
+                SqlDataAdapter da = new SqlDataAdapter(sTruyVan2, KetNoi);
+                da.Fill(dt);
+            }
+            return dt;
+        }
+        #endregion
+
+        #region TimDonHangTheoMa
+        private int timdonhangtheomadata(string madhtim)
+        {
+            int kq = 1;
+            DataTable dt = new DataTable();
+            string sTruyVan = string.Format(@"select * from donhang where madh = '{0}'", madhtim);
+            SqlDataAdapter da = new SqlDataAdapter(sTruyVan, KetNoi);
+            da.Fill(dt);
+
+            int dem = dt.Rows.Count;
+            // MessageBox.Show("so dong = "+dem);
+            if (dem > 0)
+                return 1;
+            else
+                return 0;
         }
         #endregion
 

@@ -211,6 +211,7 @@
             this.btnThem.TabIndex = 9;
             this.btnThem.Text = "Thêm";
             this.btnThem.UseVisualStyleBackColor = true;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // btnSua
             // 
@@ -284,6 +285,7 @@
             this.dgDSDonHang.Name = "dgDSDonHang";
             this.dgDSDonHang.RowHeadersWidth = 62;
             this.dgDSDonHang.RowTemplate.Height = 28;
+            this.dgDSDonHang.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgDSDonHang.Size = new System.Drawing.Size(895, 232);
             this.dgDSDonHang.TabIndex = 0;
             this.dgDSDonHang.Click += new System.EventHandler(this.dgDSDonHang_Click);

@@ -100,5 +100,77 @@ namespace BAI10_CLIENT_TCP_QL_CHUC_VU
             txtSoLuong.Text = r.Cells["soluong"].Value.ToString();
             txtTongTien.Text = r.Cells["tongtien"].Value.ToString();
         }
+
+        // Tìm đơn hàng theo mã
+        public bool timDonHangTheoMaDH(string madhtim)
+        {
+            chon = 11;
+
+            sr = new StreamReader(frmKetNoi.ns);
+            sw = new StreamWriter(frmKetNoi.ns);
+
+            sw.WriteLine(chon);
+            sw.WriteLine(madhtim);
+            sw.Flush();
+
+            int kq = int.Parse(sr.ReadLine());
+
+            if (kq == 1)
+                return true;
+            else
+                return false;
+        }
+
+        private void btnThem_Click(object sender, EventArgs e)
+        {
+            // Kiểm tra dữ liệu có bị bỏ trống 
+            if (txtMaDH.Text == "" || txtTenKH.Text == "" || txtSoLuong.Text == "" || cmbTenSanPham.Text == "" || txtTongTien.Text == "")
+            {
+                MessageBox.Show("Vui lòng nhập đầy đủ dữ liệu!");
+                return;
+            }
+            // Kiểm tra mã hãng sản xuất có độ dài chuỗi hợp lệ hay không
+            if (txtMaDH.Text.Length > 5)
+            {
+                MessageBox.Show("Mã hãng sản xuất tối đa 5 ký tự!");
+                return;
+            }
+            if (timDonHangTheoMaDH(txtMaDH.Text) == true)
+            {
+                MessageBox.Show("Mã chức vụ đã tồn tại!");
+                return;
+            }
+
+            chon = 12;
+            string madh = txtMaDH.Text;
+            string khachhang = txtTenKH.Text;
+            string tensp = cmbTenSanPham.Text;
+            string soluong = txtSoLuong.Text;
+            string tongtien = txtTongTien.Text;
+            string ngaylap = dtmNgayLap.Text;
+            //thêm chức vụ            
+            sr = new StreamReader(frmKetNoi.ns);
+            sw = new StreamWriter(frmKetNoi.ns);
+
+            sw.WriteLine(chon);
+            sw.WriteLine(madh);
+            sw.WriteLine(khachhang);
+            sw.WriteLine(tensp);
+            sw.WriteLine(soluong);
+            sw.WriteLine(tongtien);
+            sw.WriteLine(ngaylap);
+
+            sw.Flush();
+
+            //tạo mảng byte để nhận dữ liệu từ máy chủ
+            byte[] data = new byte[1024 * 5000];
+            frmKetNoi.clientSock.Receive(data);
+
+            //chuyển dữ liệu vừa nhận dạng mảng byte sang datatable
+            DataTable dt = (DataTable)DeserializeData(data);
+
+            //đưa datatable vào dataGridView
+            dgDSDonHang.DataSource = dt;
+        }
     }
 }
