@@ -180,5 +180,117 @@ namespace BAI10_CLIENT_TCP_QL_CHUC_VU
             //đưa datatable vào dataGridView
             dgDSDonHang.DataSource = dt;
         }
+
+        private void btnSua_Click(object sender, EventArgs e)
+        {
+            // Kiểm tra dữ liệu có bị bỏ trống 
+            if (txtMaDH.Text == "" || txtTenKH.Text == "")
+            {
+                MessageBox.Show("Vui lòng nhập đầy đủ dữ liệu!");
+                return;
+            }
+            // Kiểm tra mã hãng sản xuất có độ dài chuỗi hợp lệ hay không
+            if (txtMaDH.Text.Length > 5)
+            {
+                MessageBox.Show("Mã hãng sản xuất tối đa 5 ký tự!");
+                return;
+            }
+            if (timDonHangTheoMaDH(txtMaDH.Text) == false)
+            {
+                MessageBox.Show("Mã chức vụ đã tồn tại!");
+                return;
+            }
+
+            chon = 14;
+            string madh = txtMaDH.Text;
+            string khachang = txtTenKH.Text;
+            string tensp = cmbTenSanPham.SelectedValue.ToString();
+            DateTime ngaylap = DateTime.Parse(dtmNgayLap.Text);
+            float tongtien = float.Parse(txtTongTien.Text);
+            float soluong = float.Parse(txtSoLuong.Text);
+
+            //thêm chức vụ
+
+            sr = new StreamReader(frmKetNoi.ns);
+            sw = new StreamWriter(frmKetNoi.ns);
+
+            sw.WriteLine(chon);
+            sw.WriteLine(madh);
+            sw.WriteLine(khachang);
+            sw.WriteLine(tensp);
+            sw.WriteLine(ngaylap);
+            sw.WriteLine(tongtien);
+            sw.WriteLine(soluong);
+
+            sw.Flush();
+
+            //tạo mảng byte để nhận dữ liệu từ máy chủ
+            byte[] data = new byte[1024 * 5000];
+            frmKetNoi.clientSock.Receive(data);
+
+            //chuyển dữ liệu vừa nhận dạng mảng byte sang datatable
+            DataTable dt = (DataTable)DeserializeData(data);
+
+            //đưa datatable vào dataGridView
+            dgDSDonHang.DataSource = dt;
+        }
+
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+            // kiểm tra mã có tồn tại
+            if (txtMaDH.Text == "")
+            {
+                MessageBox.Show("Vui lòng chọn mã đơn hàng!");
+                return;
+            }
+            chon = 15;
+            string madh = txtMaDH.Text;
+
+            sr = new StreamReader(frmKetNoi.ns);
+            sw = new StreamWriter(frmKetNoi.ns);
+
+            sw.WriteLine(chon);
+            sw.WriteLine(madh);
+            sw.Flush();
+
+            //tạo mảng byte để nhận dữ liệu từ máy chủ
+            byte[] data = new byte[1024 * 5000];
+            frmKetNoi.clientSock.Receive(data);
+
+            //chuyển dữ liệu vừa nhận dạng mảng byte sang datatable
+            DataTable dt = (DataTable)DeserializeData(data);
+
+            //đưa datatable vào dataGridView
+            dgDSDonHang.DataSource = dt;
+        }
+
+        private void btnTimKiem_Click(object sender, EventArgs e)
+        {
+            chon = 16;
+            string khachhang = txtTimKiem.Text;
+
+            sr = new StreamReader(frmKetNoi.ns);
+            sw = new StreamWriter(frmKetNoi.ns);
+
+            sw.WriteLine(chon);
+            sw.WriteLine(khachhang);
+
+            sw.Flush();
+
+            //tạo mảng byte để nhận dữ liệu từ máy chủ
+            byte[] data = new byte[1024 * 5000];
+            frmKetNoi.clientSock.Receive(data);
+
+            //chuyển dữ liệu vừa nhận dạng mảng byte sang datatable
+            DataTable dt = (DataTable)DeserializeData(data);
+
+            //đưa datatable vào dataGridView
+            dgDSDonHang.DataSource = dt;
+        }
+
+        private void btnThoat_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

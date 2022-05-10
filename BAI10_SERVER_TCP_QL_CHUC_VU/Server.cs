@@ -217,7 +217,7 @@ namespace BAI10_SERVER_TCP_QL_CHUC_VU
                         clientSock.Send(SerializeData(table));
                     }
 
-                    //chọn = 5 tìm chức vụ theo macv
+                    //chọn = 5 tìm hãng sản xuất theo mahsx
                     if (chon == 5)
                     {
                         string mahsxtim = sr.ReadLine();
@@ -227,9 +227,10 @@ namespace BAI10_SERVER_TCP_QL_CHUC_VU
                         sw.Flush();
                     }
 
+                    //chọn = 1 là sự kiện khi client nhấn nút thêm
                     if (chon == 1)
                     {
-                        //nhận macv, tencv, hspc từ client
+                        //nhận mahsx, tenhsx từ client
                         string mahsx = sr.ReadLine();
                         string tenhsx = sr.ReadLine();
 
@@ -277,7 +278,7 @@ namespace BAI10_SERVER_TCP_QL_CHUC_VU
                     #endregion
 
                     #region DonHang
-                    //chọn = 11 là sự kiện khi client nhấn nút thêm
+                    //chọn = 11 là sự kiện khi lấy dữ liệu
                     if (chon == 11)
                     {
                         //tạo datatable lấy dữ liệu table chức vụ từ sql server
@@ -294,7 +295,7 @@ namespace BAI10_SERVER_TCP_QL_CHUC_VU
 
                     }
 
-                    //chọn = 5 tìm chức vụ theo macv
+                    //chọn = 12 tìm đơn hàng theo madh
                     if (chon == 12)
                     {
                         string madhtim = sr.ReadLine();
@@ -304,6 +305,7 @@ namespace BAI10_SERVER_TCP_QL_CHUC_VU
                         sw.Flush();
                     }
 
+                    //chọn = 13 là sự kiện khi client nhấn nút thêm
                     if (chon == 13)
                     {
                         //nhận macv, tencv, hspc từ client
@@ -315,6 +317,46 @@ namespace BAI10_SERVER_TCP_QL_CHUC_VU
                         float soluong = float.Parse(sr.ReadLine());
 
                         DataTable table100 = themdonhangdata(madh, khachhang, masp, ngaylap, tongtien, soluong);
+
+                        //chuyển datatable sang dạng mảng byte --> rồi gởi sang client
+                        clientSock.Send(SerializeData(table100));
+                    }
+
+                    //chọn = 14 là sự kiện khi client nhấn nút cập nhật
+                    if (chon == 14)
+                    {
+                        //nhận macv, tencv, hspc từ client
+                        string madh = sr.ReadLine();
+                        string khachhang = sr.ReadLine();
+                        string masp = sr.ReadLine();
+                        DateTime ngaylap = DateTime.Parse(sr.ReadLine());
+                        float tongtien = float.Parse(sr.ReadLine());
+                        float soluong = float.Parse(sr.ReadLine());
+
+                        DataTable table100 = capnhadonhangdata(madh, khachhang, masp, ngaylap, tongtien, soluong);
+
+                        //chuyển datatable sang dạng mảng byte --> rồi gởi sang client
+                        clientSock.Send(SerializeData(table100));
+                    }
+
+                    //chọn = 15 là sự kiện khi client nhấn nút xóa
+                    if (chon == 15)
+                    {
+                        string madh = sr.ReadLine();
+
+                        DataTable table100 = xoadonhangdata(madh);
+
+                        //chuyển datatable sang dạng mảng byte --> rồi gởi sang client
+                        clientSock.Send(SerializeData(table100));
+
+                    }
+
+                    //chọn = 16 là sự kiện khi client nhấn nút tìm
+                    if (chon == 16)
+                    {
+                        string khachhang = sr.ReadLine();
+
+                        DataTable table100 = timdonhangdata(khachhang);
 
                         //chuyển datatable sang dạng mảng byte --> rồi gởi sang client
                         clientSock.Send(SerializeData(table100));
@@ -720,7 +762,7 @@ namespace BAI10_SERVER_TCP_QL_CHUC_VU
         {
             bool kt = false;
             DataTable dt = new DataTable();
-            string sTruyVan = string.Format(@"update donhang set khachhang=N'{0}', masp=N'{1}', ngaylap=N'{2}', tongtien=N'{3}', soluong=N'{4}'  where madh='{5}'", khachhang, masp, ngaylap, tongtien, soluong);
+            string sTruyVan = string.Format(@"update donhang set khachhang=N'{0}', masp=N'{1}', ngaylap=N'{2}', tongtien=N'{3}', soluong=N'{4}' where madh='{5}'", khachhang, masp, ngaylap, tongtien, soluong, madh);
             try
             {
                 SqlCommand cm = new SqlCommand(sTruyVan, KetNoi);
@@ -733,10 +775,51 @@ namespace BAI10_SERVER_TCP_QL_CHUC_VU
             }
             if (kt == true)
             {
-                string sTruyVan2 = "select * from hangsanxuat";
+                string sTruyVan2 = "select * from donhang";
                 SqlDataAdapter da = new SqlDataAdapter(sTruyVan2, KetNoi);
                 da.Fill(dt);
             }
+            return dt;
+        }
+        #endregion
+
+        #region XoaDonHang
+        private DataTable xoadonhangdata(string madh)
+        {
+            bool kt = false;
+            DataTable dt2 = new DataTable();
+            string sTruyVan1 = string.Format(@"delete from donhang where madh='{0}'", madh);
+            //MessageBox.Show(sTruyVan1.ToString());
+            try
+            {
+                SqlCommand cm = new SqlCommand(sTruyVan1, KetNoi);
+                cm.ExecuteNonQuery();
+                kt = true;
+            }
+            catch (Exception ex)
+            {
+                kt = false;
+            }
+            if (kt == true)
+            {
+                string sTruyVan2 = "select * from donhang";
+                SqlDataAdapter da = new SqlDataAdapter(sTruyVan2, KetNoi);
+                da.Fill(dt2);
+            }
+            return dt2;
+        }
+        #endregion
+
+        #region TimDonHang
+        private DataTable timdonhangdata(string khachhang)
+        {
+            bool kt = false;
+            DataTable dt = new DataTable();
+            string sTruyVan = string.Format(@"select * from donhang where khachhang like '%{0}%'", khachhang);
+            //MessageBox.Show("sql: "+sTruyVan);
+            SqlDataAdapter da = new SqlDataAdapter(sTruyVan, KetNoi);
+            da.Fill(dt);
+
             return dt;
         }
         #endregion
