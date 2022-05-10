@@ -815,7 +815,7 @@ namespace BAI10_SERVER_TCP_QL_CHUC_VU
         {
             bool kt = false;
             DataTable dt = new DataTable();
-            string sTruyVan = string.Format(@"select * from donhang where khachhang like '%{0}%'", khachhang);
+            string sTruyVan = string.Format(@"select * from donhang where khachhang like N'%{0}%'", khachhang);
             //MessageBox.Show("sql: "+sTruyVan);
             SqlDataAdapter da = new SqlDataAdapter(sTruyVan, KetNoi);
             da.Fill(dt);
