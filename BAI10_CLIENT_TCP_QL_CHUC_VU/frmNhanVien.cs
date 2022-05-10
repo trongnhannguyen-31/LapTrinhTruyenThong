@@ -113,5 +113,7 @@ namespace BAI10_CLIENT_TCP_QL_CHUC_VU
             dtpNgaySinh.Text = r.Cells["ngaysinh"].Value.ToString();
             cboChucVu.SelectedValue = r.Cells["macv"].Value;
         }
+
+       
     }
 }

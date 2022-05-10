@@ -60,8 +60,17 @@ namespace BAI10_CLIENT_TCP_QL_CHUC_VU
 
                 //chuyển dữ liệu vừa nhận dạng mảng byte sang kiểu object rồi ép kiểu sang datatable
                 DataTable dt_sanpham = (DataTable)DeserializeData(data_sanpham);
-
-                
+                dgDSSanPham.DataSource = dt_sanpham;
+                dgDSSanPham.Columns["masp"].HeaderText = "Mã sản phẩm";
+                dgDSSanPham.Columns["tensp"].HeaderText = "Tên sản phẩm";
+                dgDSSanPham.Columns["mahsx"].HeaderText = "Tên hãn sản xuất";
+                dgDSSanPham.Columns["cpu"].HeaderText = "CPU";
+                dgDSSanPham.Columns["ram"].HeaderText = "RAM";
+                dgDSSanPham.Columns["rom"].HeaderText = "ROM";
+                dgDSSanPham.Columns["manhinh"].HeaderText = "Màn hình";
+                dgDSSanPham.Columns["kichthuoc"].HeaderText = "Kích thước";
+                dgDSSanPham.Columns["hedieuhanh"].HeaderText = "Hệ điều hành";
+                dgDSSanPham.Columns["giaban"].HeaderText = "Giá bán";
 
                 cboHSX.DataSource = dt_hsx;
                 cboHSX.DisplayMember = "tenhsx";
@@ -72,8 +81,9 @@ namespace BAI10_CLIENT_TCP_QL_CHUC_VU
                 dgDSSanPham.DataSource = dt_sanpham;
 
 
-
-
+                /*byte[] data_sanpham = new byte[1024 * 5000];
+                frmKetNoi.clientSock.Receive(data_hsx);
+                DataTable dt_hsx = (DataTable)DeserializeData(data_hsx);*/
 
                 //clientSock.Close();
             }
@@ -167,6 +177,79 @@ namespace BAI10_CLIENT_TCP_QL_CHUC_VU
                 sql = "INSERT INTO sanpham(masp,tensp,mahsx,cpu,ram,rom,manhinh,hedieuhanh,kichthuoc,giaban)VALUES (";
                 sql += "N'" + txtMaSP.Text + "',N'" + txtTenSP.Text + "',N'" + cboHSX.SelectedIndex + "','" + txtCPU.Text + "',N'" + txtRAM.Text + "',N'" + txtROM.Text + "',N'"  + txtManHinh.Text + "',N'" + txtHeDieuHanh.Text + "',N'" + txtKichThuoc.Text + "',N'" + txtGiaBan.Text + "')";
             }*/
+        }
+
+        private void btnSua_Click(object sender, EventArgs e)
+        {
+            // kiểm tra mã có tồn tại
+            if (txtMaSP.Text == "" || txtTenSP.Text == "" || txtRAM.Text == "" || txtCPU.Text == "" || txtRAM.Text == "" || txtROM.Text == "" || txtManHinh.Text == "" || txtHeDieuHanh.Text == "" || txtKichThuoc.Text == "" || txtGiaBan.Text == "")
+            {
+                MessageBox.Show("Vui lòng chọn mhập đủ thông tin!");
+                return;
+            }
+            if (timSanPhamTheoMaSP(txtMaSP.Text) == false)
+            {
+                MessageBox.Show("Sản phẩm không tồn tại!");
+                return;
+            }
+            chon = 22;
+            string masp = txtMaSP.Text;
+            string tensp = txtTenSP.Text;
+            string mahsx = cboHSX.ValueMember;
+            string cpu = txtCPU.Text;
+            string ram = txtRAM.Text;
+            string rom = txtROM.Text;
+            string manhinh = txtManHinh.Text;
+            string hedieuhanh = txtHeDieuHanh.Text;
+            string kichthuoc = txtKichThuoc.Text;
+            float giaban = float.Parse(txtGiaBan.Text);
+
+
+            //thêm chức vụ
+
+            sr = new StreamReader(frmKetNoi.ns);
+            sw = new StreamWriter(frmKetNoi.ns);
+
+            sw.WriteLine(chon);
+            sw.WriteLine(masp);
+            sw.WriteLine(tensp);
+            sw.WriteLine(mahsx);
+            sw.WriteLine(cpu);
+            sw.WriteLine(ram);
+            sw.WriteLine(rom);
+            sw.WriteLine(manhinh);
+            sw.WriteLine(hedieuhanh);
+            sw.WriteLine(kichthuoc);
+            sw.WriteLine(giaban);
+            sw.Flush();
+
+            //tạo mảng byte để nhận dữ liệu từ máy chủ
+            byte[] data = new byte[1024 * 5000];
+            frmKetNoi.clientSock.Receive(data);
+
+            //chuyển dữ liệu vừa nhận dạng mảng byte sang datatable
+            DataTable dt = (DataTable)DeserializeData(data);
+
+            //đưa datatable vào dataGridView
+            dgDSSanPham.DataSource = dt;
+        }
+        public bool timSanPhamTheoMaSP(string masp)
+        {
+            chon = 21;
+
+            sr = new StreamReader(frmKetNoi.ns);
+            sw = new StreamWriter(frmKetNoi.ns);
+
+            sw.WriteLine(chon);
+            sw.WriteLine(masp);
+            sw.Flush();
+
+            int kq = int.Parse(sr.ReadLine());
+
+            if (kq == 1)
+                return true;
+            else
+                return false;
         }
     }
 }

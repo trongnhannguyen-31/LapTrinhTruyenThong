@@ -39,8 +39,8 @@ namespace BAI10_SERVER_TCP_QL_CHUC_VU
         public void MoKetNoi()
         {
             //   s = @"Data Source=DESKTOP-T84NIPD\MAYAO;Initial Catalog=QLNV;Integrated Security=True; User ID=sa;password=123456";
-            s = @"Data Source=DESKTOP-BV0HRRC\SQLEXPRESS;Initial Catalog=QLLaptop;Integrated Security=True";
-            //s = @"Data Source=MSI\SQLEXPRESS;Initial Catalog=QLNV;Integrated Security=True";
+            //s = @"Data Source=DESKTOP-BV0HRRC\SQLEXPRESS;Initial Catalog=QLLaptop;Integrated Security=True";
+            s = @"Data Source=MSI\SQLEXPRESS;Initial Catalog=QLNV;Integrated Security=True";
             //s = @"Data Source=MAY1\SQLEXPRESS;Initial Catalog=QLNV;Integrated Security=True";
 
             KetNoi = new SqlConnection(s);
@@ -327,17 +327,48 @@ namespace BAI10_SERVER_TCP_QL_CHUC_VU
                     if (chon == 20)
                     {
                         //tạo datatable lấy dữ liệu table chức vụ từ sql server
-                        DataTable table11 = getdataHangSanXuat();
+                        DataTable table20 = getdataHangSanXuat();
 
                         //chuyển datatable sang dạng mảng byte --> rồi gởi sang client
-                        clientSock.Send(SerializeData(table11));
+                        clientSock.Send(SerializeData(table20));
 
                         //tạo datatable lấy dữ liệu table nhân viên từ sql server
-                        DataTable table12 = getdataSanPham();
+                        DataTable table21 = getdataSanPham();
 
                         //chuyển datatable sang dạng mảng byte --> rồi gởi sang client
-                        clientSock.Send(SerializeData(table12));
+                        clientSock.Send(SerializeData(table21));
 
+                        /*DataTable table22 = findSanPham(string ma);
+                        clientSock.Send(SerializeData(table22));*/
+
+                    }
+                    //chọn = 21 tìm sản phẩm theo mã sản phẩm
+                    if (chon == 21)
+                    {
+                        string masptim = sr.ReadLine();
+                        int kq = timmasanphamdata(masptim);
+
+                        sw.WriteLine(kq);
+                        sw.Flush();
+                    }
+                    //chọn = 22 là sự kiện khi client nhấn nút cập nhật
+                    if (chon == 22)
+                    {
+                        string masp = sr.ReadLine();
+                        string tensp = sr.ReadLine();
+                        string mahsx = sr.ReadLine();
+                        string cpu = sr.ReadLine();
+                        string ram = sr.ReadLine();
+                        string rom = sr.ReadLine();
+                        string manhinh = sr.ReadLine();
+                        string hedieuhanh = sr.ReadLine();
+                        string kichthuoc = sr.ReadLine();
+                        float giaban = float.Parse(sr.ReadLine());
+
+                        DataTable table3 = capnhatsanphamdata(masp, tensp, mahsx, cpu, ram, rom, manhinh, hedieuhanh, kichthuoc, giaban);
+
+                        //chuyển datatable sang dạng mảng byte --> rồi gởi sang client
+                        clientSock.Send(SerializeData(table3));
                     }
                     #endregion
                 }
@@ -711,6 +742,8 @@ namespace BAI10_SERVER_TCP_QL_CHUC_VU
         #endregion
 
         // Sản Phẩm
+        #region SanPham
+
         #region GetDataSanPham
         private DataTable getdataSanPham()
         {
@@ -722,6 +755,51 @@ namespace BAI10_SERVER_TCP_QL_CHUC_VU
 
             return dt;
         }
+        #endregion
+
+        private DataTable capnhatsanphamdata(string masp, string tensp, string mahsx, string cpu, string ram, string rom, string manhinh, string hedieuhanh, string kichthuoc, float giaban)
+        {
+            bool kt = false;
+            DataTable dt = new DataTable();
+            string sTruyVan = string.Format(@"update sanpham set tensp=N'{0}',mahsx='{1}',cpu='{2}',ram='{3}',rom='{4}',manhinh='{5}',hedieuhanh='{6}',kichthuoc='{7}',giaban='{8}' where masp='{9}'", tensp, mahsx, cpu, ram, rom, manhinh, hedieuhanh, kichthuoc, giaban, masp);
+            try
+            {
+                SqlCommand cm = new SqlCommand(sTruyVan, KetNoi);
+                cm.ExecuteNonQuery();
+                kt = true;
+            }
+            catch (Exception ex)
+            {
+                kt = false;
+            }
+            if (kt == true)
+            {
+                string sTruyVan2 = "select * from sanpham";
+                SqlDataAdapter da = new SqlDataAdapter(sTruyVan2, KetNoi);
+                da.Fill(dt);
+            }
+            return dt;
+
+        }
+
+        #region FindSanPham
+        private int timmasanphamdata(string masptim)
+        {
+            int kq = 1;
+            DataTable dt = new DataTable();
+            string sTruyVan = string.Format(@"select * from sanpham where masp = '{0}'", masptim);
+            SqlDataAdapter da = new SqlDataAdapter(sTruyVan, KetNoi);
+            da.Fill(dt);
+
+            int dem = dt.Rows.Count;
+            // MessageBox.Show("so dong = "+dem);
+            if (dem > 0)
+                return 1;
+            else
+                return 0;
+        }
+        #endregion
+
         #endregion
     }
 }
