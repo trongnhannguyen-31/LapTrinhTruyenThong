@@ -63,7 +63,7 @@ namespace BAI10_CLIENT_TCP_QL_CHUC_VU
                 dgDSSanPham.DataSource = dt_sanpham;
                 dgDSSanPham.Columns["masp"].HeaderText = "Mã sản phẩm";
                 dgDSSanPham.Columns["tensp"].HeaderText = "Tên sản phẩm";
-                dgDSSanPham.Columns["mahsx"].HeaderText = "Tên hãn sản xuất";
+                dgDSSanPham.Columns["mahsx"].HeaderText = "Mã hãn sản xuất";
                 dgDSSanPham.Columns["cpu"].HeaderText = "CPU";
                 dgDSSanPham.Columns["ram"].HeaderText = "RAM";
                 dgDSSanPham.Columns["rom"].HeaderText = "ROM";
@@ -71,6 +71,8 @@ namespace BAI10_CLIENT_TCP_QL_CHUC_VU
                 dgDSSanPham.Columns["kichthuoc"].HeaderText = "Kích thước";
                 dgDSSanPham.Columns["hedieuhanh"].HeaderText = "Hệ điều hành";
                 dgDSSanPham.Columns["giaban"].HeaderText = "Giá bán";
+
+                
 
                 cboHSX.DataSource = dt_hsx;
                 cboHSX.DisplayMember = "tenhsx";
@@ -120,63 +122,86 @@ namespace BAI10_CLIENT_TCP_QL_CHUC_VU
 
         private void btnTimkiem_Click(object sender, EventArgs e)
         {
-            /*//Viet cau lenh SQL cho tim kiem
-            String sql = "SELECT * FROM tblMatHang";
-            String dk = "";
-            //Tim theo MaSP khac rong
-            if (txtTimKiem.Text.Trim() != "")
-            {
-                dk += " masp like '%" + txtTimKiem.Text + "%'";
-            }
-            //kiem tra TenSP va MaSP khac rong
-            if (txtTimKiem.Text.Trim() != "" && dk != "")
-            {
-                dk += " AND tensp like N'%" + txtTimKiem.Text + "%'";
-            }
-            //Tim kiem theo TenSP khi MaSP la rong
-            if (txtTimKiem.Text.Trim() != "" && dk == "")
-            {
-                dk += " tensp like N'%" + txtTimKiem.Text + "%'";
-            }
-            //Ket hoi dk
-            if (dk != "")
-            {
-                sql += " WHERE" + dk;
-            }
-            //Goi phương thức Load dữ liệu kết hợp điều kiện tìm kiếm
-            //LoadDuLieu(sql);*/
+            chon = 25;
+            string sanpham = txtTimKiem.Text;
+
+            sr = new StreamReader(frmKetNoi.ns);
+            sw = new StreamWriter(frmKetNoi.ns);
+
+            sw.WriteLine(chon);
+            sw.WriteLine(sanpham);
+
+            sw.Flush();
+
+            //tạo mảng byte để nhận dữ liệu từ máy chủ
+            byte[] data = new byte[1024 * 5000];
+            frmKetNoi.clientSock.Receive(data);
+
+            //chuyển dữ liệu vừa nhận dạng mảng byte sang datatable
+            DataTable dt = (DataTable)DeserializeData(data);
+
+            //đưa datatable vào dataGridView
+            dgDSSanPham.DataSource = dt;
         }
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            /*string sql = "";
-            SqlConnection con;//Khai báo đối tượng thực hiện kết nối đến cơ sở dữ liệu
-            SqlCommand cmd;//Khai báo đối tượng thực hiện các câu lệnh truy vấn
-            if (btnThem.Enabled == true)
+            // Kiểm tra dữ liệu có bị bỏ trống 
+            if (txtMaSP.Text == "" || txtTenSP.Text == "" || txtRAM.Text == "" || txtCPU.Text == "" || txtRAM.Text == "" || txtROM.Text == "" || txtManHinh.Text == "" || txtHeDieuHanh.Text == "" || txtKichThuoc.Text == "" || txtGiaBan.Text == "")
             {
-                //Kiểm tra xem ô nhập MaSP có bị trống không
-                if (txtMaSP.Text.Trim() == "")
-                {
-                    errChiTiet.SetError(txtMaSP, "Bạn không để trống mã sản phẩm trường này!");
-                    return;
-                }
-                else
-                {
-                    //Kiểm tra xem mã sản phẩm đã tồn tại chưa đẻ tránh việc insert mới bị lỗi  
-                    sql = "Select Count(*) From sanpham Where masp ='" + txtMaSP.Text + "'";
-                    cmd = new SqlCommand(sql, con);
-                    int val = (int)cmd.ExecuteScalar();
-                    if (val > 0)
-                    {
-                        errChiTiet.SetError(txtMaSP, "Mã sản phẩm trùng trong cơ sở dữ liệu");
-                        return;
-                    }
-                    errChiTiet.Clear();
-                }
-                //Insert vao CSDL
-                sql = "INSERT INTO sanpham(masp,tensp,mahsx,cpu,ram,rom,manhinh,hedieuhanh,kichthuoc,giaban)VALUES (";
-                sql += "N'" + txtMaSP.Text + "',N'" + txtTenSP.Text + "',N'" + cboHSX.SelectedIndex + "','" + txtCPU.Text + "',N'" + txtRAM.Text + "',N'" + txtROM.Text + "',N'"  + txtManHinh.Text + "',N'" + txtHeDieuHanh.Text + "',N'" + txtKichThuoc.Text + "',N'" + txtGiaBan.Text + "')";
-            }*/
+                MessageBox.Show("Vui lòng nhập đầy đủ dữ liệu!");
+                return;
+            }
+            // Kiểm tra mã nhân viên có độ dài chuỗi hợp lệ hay không
+            if (txtMaSP.Text.Length > 5)
+            {
+                MessageBox.Show("Mã chức vụ tối đa 5 ký tự!");
+                return;
+            }
+            if (timSanPhamTheoMaSP(txtMaSP.Text) == true)
+            {
+                MessageBox.Show("Mã chức vụ đã tồn tại!");
+                return;
+            }
+
+            chon = 23;
+            string masp = txtMaSP.Text;
+            string tensp = txtTenSP.Text;
+            string mahsx = cboHSX.SelectedValue.ToString();
+            string cpu = txtCPU.Text;
+            string ram = txtRAM.Text;
+            string rom = txtROM.Text;
+            string manhinh = txtManHinh.Text;
+            string hedieuhanh = txtHeDieuHanh.Text;
+            string kichthuoc = txtKichThuoc.Text;
+            float giaban = float.Parse(txtGiaBan.Text);
+
+            //thêm chức vụ            
+            sr = new StreamReader(frmKetNoi.ns);
+            sw = new StreamWriter(frmKetNoi.ns);
+
+            sw.WriteLine(chon);
+            sw.WriteLine(masp);
+            sw.WriteLine(tensp);
+            sw.WriteLine(mahsx);
+            sw.WriteLine(cpu);
+            sw.WriteLine(ram);
+            sw.WriteLine(rom);
+            sw.WriteLine(manhinh);
+            sw.WriteLine(hedieuhanh);
+            sw.WriteLine(kichthuoc);
+            sw.WriteLine(giaban);
+            sw.Flush();
+
+            //tạo mảng byte để nhận dữ liệu từ máy chủ
+            byte[] data = new byte[1024 * 5000];
+            frmKetNoi.clientSock.Receive(data);
+
+            //chuyển dữ liệu vừa nhận dạng mảng byte sang datatable
+            DataTable dt = (DataTable)DeserializeData(data);
+
+            //đưa datatable vào dataGridView
+            dgDSSanPham.DataSource = dt;
         }
 
         private void btnSua_Click(object sender, EventArgs e)
@@ -195,7 +220,7 @@ namespace BAI10_CLIENT_TCP_QL_CHUC_VU
             chon = 22;
             string masp = txtMaSP.Text;
             string tensp = txtTenSP.Text;
-            string mahsx = cboHSX.ValueMember;
+            string mahsx = cboHSX.SelectedValue.ToString();
             string cpu = txtCPU.Text;
             string ram = txtRAM.Text;
             string rom = txtROM.Text;
@@ -250,6 +275,35 @@ namespace BAI10_CLIENT_TCP_QL_CHUC_VU
                 return true;
             else
                 return false;
+        }
+
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+            // kiểm tra mã có tồn tại
+            if (txtMaSP.Text == "")
+            {
+                MessageBox.Show("Vui lòng chọn mã sản phẩm!");
+                return;
+            }
+            chon = 24;
+            string masp = txtMaSP.Text;
+
+            sr = new StreamReader(frmKetNoi.ns);
+            sw = new StreamWriter(frmKetNoi.ns);
+
+            sw.WriteLine(chon);
+            sw.WriteLine(masp);
+            sw.Flush();
+
+            //tạo mảng byte để nhận dữ liệu từ máy chủ
+            byte[] data = new byte[1024 * 5000];
+            frmKetNoi.clientSock.Receive(data);
+
+            //chuyển dữ liệu vừa nhận dạng mảng byte sang datatable
+            DataTable dt = (DataTable)DeserializeData(data);
+
+            //đưa datatable vào dataGridView
+            dgDSSanPham.DataSource = dt;
         }
     }
 }
