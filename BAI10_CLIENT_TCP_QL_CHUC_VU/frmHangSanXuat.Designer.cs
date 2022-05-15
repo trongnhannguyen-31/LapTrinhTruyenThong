@@ -56,7 +56,7 @@
             this.label1.Location = new System.Drawing.Point(178, 9);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(393, 32);
+            this.label1.Size = new System.Drawing.Size(338, 29);
             this.label1.TabIndex = 0;
             this.label1.Text = "QUẢN LÝ HÃNG SẢN XUẤT";
             // 
@@ -66,7 +66,7 @@
             this.label2.Location = new System.Drawing.Point(8, 42);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(179, 25);
+            this.label2.Size = new System.Drawing.Size(150, 20);
             this.label2.TabIndex = 1;
             this.label2.Text = "Mã Hãng Sản Xuất";
             // 
@@ -76,7 +76,7 @@
             this.label3.Location = new System.Drawing.Point(8, 94);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(186, 25);
+            this.label3.Size = new System.Drawing.Size(155, 20);
             this.label3.TabIndex = 2;
             this.label3.Text = "Tên Hãng Sản Xuất";
             // 
@@ -85,7 +85,7 @@
             this.txtTenHSX.Location = new System.Drawing.Point(209, 91);
             this.txtTenHSX.Margin = new System.Windows.Forms.Padding(4);
             this.txtTenHSX.Name = "txtTenHSX";
-            this.txtTenHSX.Size = new System.Drawing.Size(303, 30);
+            this.txtTenHSX.Size = new System.Drawing.Size(303, 26);
             this.txtTenHSX.TabIndex = 3;
             // 
             // txtMaHSX
@@ -93,7 +93,7 @@
             this.txtMaHSX.Location = new System.Drawing.Point(209, 39);
             this.txtMaHSX.Margin = new System.Windows.Forms.Padding(4);
             this.txtMaHSX.Name = "txtMaHSX";
-            this.txtMaHSX.Size = new System.Drawing.Size(303, 30);
+            this.txtMaHSX.Size = new System.Drawing.Size(303, 26);
             this.txtMaHSX.TabIndex = 4;
             // 
             // groupBox1
@@ -170,7 +170,7 @@
             // 
             this.txtTimKiem.Location = new System.Drawing.Point(6, 29);
             this.txtTimKiem.Name = "txtTimKiem";
-            this.txtTimKiem.Size = new System.Drawing.Size(350, 30);
+            this.txtTimKiem.Size = new System.Drawing.Size(350, 26);
             this.txtTimKiem.TabIndex = 0;
             // 
             // groupBox3
@@ -190,6 +190,7 @@
             this.dgDanhSachHang.Name = "dgDanhSachHang";
             this.dgDanhSachHang.RowHeadersWidth = 62;
             this.dgDanhSachHang.RowTemplate.Height = 28;
+            this.dgDanhSachHang.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgDanhSachHang.Size = new System.Drawing.Size(740, 191);
             this.dgDanhSachHang.TabIndex = 0;
             this.dgDanhSachHang.Click += new System.EventHandler(this.dgDanhSachHang_Click_1);
@@ -207,7 +208,7 @@
             // 
             // frmHangSanXuat
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(791, 588);
             this.Controls.Add(this.btnThoat);

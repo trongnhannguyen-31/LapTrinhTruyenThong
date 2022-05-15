@@ -63,7 +63,7 @@ namespace BAI10_CLIENT_TCP_QL_CHUC_VU
                 dgDSSanPham.DataSource = dt_sanpham;
                 dgDSSanPham.Columns["masp"].HeaderText = "Mã sản phẩm";
                 dgDSSanPham.Columns["tensp"].HeaderText = "Tên sản phẩm";
-                dgDSSanPham.Columns["mahsx"].HeaderText = "Mã hãn sản xuất";
+                dgDSSanPham.Columns["mahsx"].HeaderText = "Mã hãng sản xuất";
                 dgDSSanPham.Columns["cpu"].HeaderText = "CPU";
                 dgDSSanPham.Columns["ram"].HeaderText = "RAM";
                 dgDSSanPham.Columns["rom"].HeaderText = "ROM";
@@ -155,12 +155,12 @@ namespace BAI10_CLIENT_TCP_QL_CHUC_VU
             // Kiểm tra mã nhân viên có độ dài chuỗi hợp lệ hay không
             if (txtMaSP.Text.Length > 5)
             {
-                MessageBox.Show("Mã chức vụ tối đa 5 ký tự!");
+                MessageBox.Show("Mã sản phẩm tối đa 5 ký tự!");
                 return;
             }
             if (timSanPhamTheoMaSP(txtMaSP.Text) == true)
             {
-                MessageBox.Show("Mã chức vụ đã tồn tại!");
+                MessageBox.Show("Mã sản phẩm đã tồn tại!");
                 return;
             }
 
